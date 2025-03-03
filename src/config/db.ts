@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 // Configura Sequelize
 const db = new Sequelize(process.env.DATABASE_URL!, {
-    models: [__dirname + '/../models/**/*.ts'],
+  models: [__dirname + '/../models/**/*.ts'], // Asegúrate de que la ruta sea correcta
 });
 
-export { db };
+export default db

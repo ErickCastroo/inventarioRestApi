@@ -2,7 +2,7 @@ import colors from 'colors'
 import express from 'express'
 
 import { router } from '../router/index.js'
-import { db } from '../config/index.js'
+import  db from '../config/db.js'
 
 
 //conectar a DB
