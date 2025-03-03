@@ -1,8 +1,18 @@
-import { Sequelize } from 'sequelize'
-import dotenv from 'dotenv'
+import { Sequelize } from 'sequelize-typescript';
+import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-dotenv.config()
+// Configura dotenv
+dotenv.config();
 
-const db = new Sequelize(process.env.DB_URL!)
+// Obtén el directorio actual del archivo
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-export { db }
+// Configura Sequelize
+const db = new Sequelize(process.env.DATABASE_URL!, {
+    models: [__dirname + '/../models/**/*.ts'],
+});
+
+export { db };
