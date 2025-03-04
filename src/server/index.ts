@@ -4,7 +4,6 @@ import express from 'express'
 import { router } from '../router/index.js'
 import  db from '../config/db.js'
 
-
 //conectar a DB
 async function connectDb(){
     try {
@@ -21,7 +20,9 @@ async function connectDb(){
 connectDb()
 const app = express()
 
-app.use('/api/productos',router)
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use('/api',router)
 
 
 
