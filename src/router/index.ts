@@ -2,6 +2,8 @@ import { Router } from 'express'
 import { body } from 'express-validator'
 
 import { createProduct } from 'src/handlers/products.js'
+import { HandlerErrors } from 'src/middleware/index.js'
+
 
 
 const router = Router()
@@ -18,11 +20,12 @@ router.post('/products',
     .custom(value => value > 0),
 
   body('cantidadDisponible', 'La cantidad es requerida')
-  .isNumeric()
-  .notEmpty()
-  .custom(value => value > 0),
-
-  createProduct)
+    .isNumeric()
+    .notEmpty()
+    .custom(value => value > 0),
+  HandlerErrors,
+  createProduct
+)
 
 
 export { router }
