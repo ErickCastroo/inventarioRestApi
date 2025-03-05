@@ -8,7 +8,6 @@ const HandlerErrors = (req: Request, res: Response, next: NextFunction): void =>
         res.status(400).json({ errors: errors.array() })
         return 
     } 
-  
     next() 
 }
 
